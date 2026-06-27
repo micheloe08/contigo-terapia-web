@@ -15,16 +15,18 @@ import PatientDashboard from './pages/patient/Dashboard'
 
 // Doctor pages
 import DoctorDashboard from './pages/doctor/Dashboard'
+import Landing from './pages/Landing'
 
 const router = createBrowserRouter([
   // Rutas públicas
   {
     element: <GuestLayout />,
     children: [
-      { path: '/',        element: <Login /> },
-      { path: '/login',   element: <Login /> },
+      { path: '/', element: <Landing /> },
+      { path: '/login', element: <Login /> },
       { path: '/registro/paciente', element: <RegisterPatient /> },
       { path: '/registro/doctor',   element: <RegisterDoctor /> },
+      { path: '/', element: <Landing /> },
     ],
   },
 
