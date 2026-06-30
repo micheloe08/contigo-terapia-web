@@ -67,7 +67,7 @@ export default function RegisterDoctor() {
   };
 
   return (
-    <div className="min-h-screen bg-blue-50 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-blue-50 flex items-center justify-center p-4 sm:p-6">
       <div className="w-full max-w-lg">
         {/* Logo */}
         <div className="text-center mb-8">
@@ -83,7 +83,7 @@ export default function RegisterDoctor() {
         </div>
 
         {/* Card */}
-        <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
+        <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-8">
           {error && (
             <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl mb-6 text-sm">
               {error}
@@ -113,7 +113,7 @@ export default function RegisterDoctor() {
                   )}
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-slate-700 mb-1.5">
                       Email
@@ -173,7 +173,7 @@ export default function RegisterDoctor() {
                   )}
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-slate-700 mb-1.5">
                       Cédula profesional
@@ -225,7 +225,7 @@ export default function RegisterDoctor() {
               <p className="text-xs text-blue-600 font-medium tracking-widest uppercase mb-4">
                 Seguridad
               </p>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-slate-700 mb-1.5">
                     Contraseña

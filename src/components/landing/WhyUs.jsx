@@ -33,27 +33,27 @@ const WHY_US = [
 
 export default function WhyUs() {
   return (
-    <section className="py-16 bg-blue-50">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-12 md:py-16 bg-blue-50">
+      <div className="max-w-7xl mx-auto px-4">
         <p className="text-xs text-blue-600 font-medium tracking-widest uppercase mb-2">
           Por qué elegirnos
         </p>
-        <h2 className="text-3xl font-medium text-blue-900 mb-10">
+        <h2 className="text-2xl md:text-3xl font-medium text-blue-900 mb-8 md:mb-10">
           Tu bienestar es nuestra prioridad
         </h2>
-        <div className="grid grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
           {WHY_US.map((w) => (
             <div
               key={w.title}
-              className="bg-white border border-slate-200 rounded-2xl p-6"
+              className="bg-white border border-slate-200 rounded-2xl p-5 md:p-6"
             >
               <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-4">
                 <i className={`ti ${w.icon} text-blue-600 text-2xl`} />
               </div>
-              <p className="font-medium text-slate-900 text-lg mb-2">
+              <p className="font-medium text-slate-900 text-base md:text-lg mb-2">
                 {w.title}
               </p>
-              <p className="text-slate-500 leading-relaxed">{w.desc}</p>
+              <p className="text-slate-500 text-sm leading-relaxed">{w.desc}</p>
             </div>
           ))}
         </div>

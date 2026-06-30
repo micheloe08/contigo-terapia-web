@@ -27,36 +27,38 @@ const TESTIMONIALS = [
 
 export default function Testimonials() {
   return (
-    <section className="py-16">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-12 md:py-16">
+      <div className="max-w-7xl mx-auto px-4">
         <p className="text-xs text-blue-600 font-medium tracking-widest uppercase mb-2">
           Testimonios
         </p>
-        <h2 className="text-3xl font-medium text-slate-900 mb-10">
+        <h2 className="text-2xl md:text-3xl font-medium text-slate-900 mb-8 md:mb-10">
           Lo que dicen nuestros pacientes
         </h2>
-        <div className="grid grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
           {TESTIMONIALS.map((t) => (
             <div
               key={t.initials}
-              className="bg-white border border-slate-200 rounded-2xl p-6"
+              className="bg-white border border-slate-200 rounded-2xl p-5 md:p-6"
             >
               <div className="flex gap-1 mb-4">
                 {[1, 2, 3, 4, 5].map((i) => (
                   <i key={i} className="ti ti-star text-amber-400 text-sm" />
                 ))}
               </div>
-              <p className="text-slate-600 leading-relaxed mb-5">"{t.text}"</p>
+              <p className="text-slate-600 text-sm leading-relaxed mb-5">
+                "{t.text}"
+              </p>
               <div className="flex items-center gap-3 border-t border-slate-100 pt-4">
                 <div
-                  className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-medium"
+                  className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-medium flex-shrink-0"
                   style={{ background: t.bg, color: t.color }}
                 >
                   {t.initials}
                 </div>
                 <div>
-                  <p className="font-medium text-slate-900">{t.name}</p>
-                  <p className="text-sm text-slate-400">{t.city}</p>
+                  <p className="font-medium text-slate-900 text-sm">{t.name}</p>
+                  <p className="text-xs text-slate-400">{t.city}</p>
                 </div>
               </div>
             </div>

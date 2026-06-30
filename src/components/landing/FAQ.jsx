@@ -19,25 +19,29 @@ const FAQS = [
 
 export default function FAQ() {
   return (
-    <section className="py-16 bg-slate-50">
-      <div className="max-w-4xl mx-auto px-6">
+    <section className="py-12 md:py-16 bg-slate-50">
+      <div className="max-w-4xl mx-auto px-4">
         <p className="text-xs text-blue-600 font-medium tracking-widest uppercase mb-2">
           FAQ
         </p>
-        <h2 className="text-3xl font-medium text-slate-900 mb-10">
+        <h2 className="text-2xl md:text-3xl font-medium text-slate-900 mb-8 md:mb-10">
           Preguntas frecuentes
         </h2>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-3 md:gap-4">
           {FAQS.map((f) => (
             <div
               key={f.q}
-              className="bg-white border border-slate-200 rounded-xl p-6"
+              className="bg-white border border-slate-200 rounded-xl p-5 md:p-6"
             >
-              <div className="flex justify-between items-center">
-                <p className="font-medium text-slate-900">{f.q}</p>
-                <i className="ti ti-chevron-down text-blue-600 text-lg" />
+              <div className="flex justify-between items-start gap-4">
+                <p className="font-medium text-slate-900 text-sm md:text-base">
+                  {f.q}
+                </p>
+                <i className="ti ti-chevron-down text-blue-600 text-lg flex-shrink-0" />
               </div>
-              <p className="text-slate-500 mt-3 leading-relaxed">{f.a}</p>
+              <p className="text-slate-500 text-sm mt-3 leading-relaxed">
+                {f.a}
+              </p>
             </div>
           ))}
         </div>

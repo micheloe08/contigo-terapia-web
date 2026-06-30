@@ -33,26 +33,26 @@ const THERAPISTS = [
 
 export default function Therapists() {
   return (
-    <section className="py-16">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex items-center justify-between mb-10">
+    <section className="py-12 md:py-16">
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="flex items-center justify-between mb-8 md:mb-10">
           <div>
             <p className="text-xs text-blue-600 font-medium tracking-widest uppercase mb-2">
               Terapeutas
             </p>
-            <h2 className="text-3xl font-medium text-slate-900">
+            <h2 className="text-2xl md:text-3xl font-medium text-slate-900">
               Conoce a nuestros especialistas
             </h2>
           </div>
-          <span className="text-sm text-blue-600 cursor-pointer hover:underline">
+          <span className="text-sm text-blue-600 cursor-pointer hover:underline whitespace-nowrap">
             Ver todos →
           </span>
         </div>
-        <div className="grid grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
           {THERAPISTS.map((t) => (
             <div
               key={t.initials}
-              className="bg-white border border-slate-200 rounded-2xl p-6 text-center"
+              className="bg-white border border-slate-200 rounded-2xl p-5 md:p-6 text-center"
             >
               <div
                 className="w-14 h-14 rounded-full flex items-center justify-center font-medium text-lg mb-4 mx-auto"
