@@ -1,3 +1,5 @@
+import { Button } from "../ui/button";
+
 const THERAPISTS = [
   {
     initials: "LG",
@@ -33,7 +35,7 @@ const THERAPISTS = [
 
 export default function Therapists() {
   return (
-    <section className="py-12 md:py-16">
+    <section id="terapeutas" className="py-12 md:py-16 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between mb-8 md:mb-10">
           <div>
@@ -85,9 +87,9 @@ export default function Therapists() {
                 ))}
                 <span className="text-sm text-slate-500 ml-1">{t.rating}</span>
               </div>
-              <button className="w-full bg-blue-600 hover:bg-blue-700 text-white border-2 border-blue-800 py-2.5 rounded-lg text-sm font-medium transition-colors">
+              <Button variant="cta" className="w-full h-auto py-2.5 text-sm">
                 Agendar sesión
-              </button>
+              </Button>
             </div>
           ))}
         </div>

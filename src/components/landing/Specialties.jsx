@@ -11,7 +11,7 @@ const SPECIALTIES = [
 
 export default function Specialties() {
   return (
-    <section className="py-12 md:py-16 bg-slate-50">
+    <section id="especialidades" className="py-12 md:py-16 bg-slate-50 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4">
         <p className="text-xs text-blue-600 font-medium tracking-widest uppercase mb-2">
           Especialidades
