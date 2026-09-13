@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Button } from "../ui/button";
 
 export default function CTAFinal() {
   return (
@@ -15,9 +16,9 @@ export default function CTAFinal() {
           no puede esperar.
         </p>
         <Link to="/registro/paciente">
-          <button className="bg-blue-600 hover:bg-blue-700 text-white border-2 border-blue-800 px-8 md:px-10 py-3 md:py-4 rounded-lg text-base md:text-lg font-medium transition-colors">
+          <Button variant="cta" className="h-auto px-8 md:px-10 py-3 md:py-4 text-base md:text-lg">
             Agendar mi primera sesión
-          </button>
+          </Button>
         </Link>
         <p className="text-xs md:text-sm text-blue-500 mt-4 md:mt-5">
           Sin tarjeta de crédito requerida para empezar

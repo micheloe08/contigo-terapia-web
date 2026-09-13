@@ -5,11 +5,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useAuthStore } from "../../store/authStore";
 import { authApi } from "../../api/auth";
+import AuthLayout from "../../components/auth/AuthLayout";
+import FormField, { inputClass } from "../../components/auth/FormField";
+import { Button } from "../../components/ui/button";
 
 const schema = z
   .object({
     name: z.string().min(2, "Nombre muy corto"),
-    email: z.string().email("Email inválido"),
+    email: z.email("Email inválido"),
     password: z.string().min(8, "Mínimo 8 caracteres"),
     password_confirmation: z.string(),
     phone: z.string().optional(),
@@ -33,6 +36,14 @@ const SPECIALTIES = [
   { id: "7", label: "Adicciones" },
   { id: "8", label: "Duelo y Pérdida" },
 ];
+
+function SectionTitle({ children }) {
+  return (
+    <p className="text-xs text-blue-600 font-medium tracking-widest uppercase mb-4">
+      {children}
+    </p>
+  );
+}
 
 export default function RegisterDoctor() {
   const navigate = useNavigate();
@@ -67,226 +78,137 @@ export default function RegisterDoctor() {
   };
 
   return (
-    <div className="min-h-screen bg-blue-50 flex items-center justify-center p-4 sm:p-6">
-      <div className="w-full max-w-lg">
-        {/* Logo */}
-        <div className="text-center mb-8">
-          <div className="w-14 h-14 bg-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <i className="ti ti-heart text-white text-2xl" />
-          </div>
-          <h1 className="text-2xl font-medium text-blue-900">
-            Registro de Terapeuta
-          </h1>
-          <p className="text-blue-600 mt-1 text-sm">
-            Crea tu perfil profesional
-          </p>
-        </div>
-
-        {/* Card */}
-        <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-8">
-          {error && (
-            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl mb-6 text-sm">
-              {error}
-            </div>
-          )}
-
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-            {/* Datos personales */}
-            <div className="pb-4 border-b border-slate-100">
-              <p className="text-xs text-blue-600 font-medium tracking-widest uppercase mb-4">
-                Datos personales
-              </p>
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1.5">
-                    Nombre completo
-                  </label>
-                  <input
-                    {...register("name")}
-                    placeholder="Dr. Juan Pérez"
-                    className="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  />
-                  {errors.name && (
-                    <p className="text-red-500 text-xs mt-1">
-                      {errors.name.message}
-                    </p>
-                  )}
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1.5">
-                      Email
-                    </label>
-                    <input
-                      {...register("email")}
-                      type="email"
-                      placeholder="dr@email.com"
-                      className="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    />
-                    {errors.email && (
-                      <p className="text-red-500 text-xs mt-1">
-                        {errors.email.message}
-                      </p>
-                    )}
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1.5">
-                      Teléfono{" "}
-                      <span className="text-slate-400">(opcional)</span>
-                    </label>
-                    <input
-                      {...register("phone")}
-                      placeholder="6671234567"
-                      className="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Datos profesionales */}
-            <div className="pb-4 border-b border-slate-100">
-              <p className="text-xs text-blue-600 font-medium tracking-widest uppercase mb-4">
-                Datos profesionales
-              </p>
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1.5">
-                    Especialidad
-                  </label>
-                  <select
-                    {...register("specialty_id")}
-                    className="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"
-                  >
-                    <option value="">Selecciona una especialidad</option>
-                    {SPECIALTIES.map((s) => (
-                      <option key={s.id} value={s.id}>
-                        {s.label}
-                      </option>
-                    ))}
-                  </select>
-                  {errors.specialty_id && (
-                    <p className="text-red-500 text-xs mt-1">
-                      {errors.specialty_id.message}
-                    </p>
-                  )}
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1.5">
-                      Cédula profesional
-                    </label>
-                    <input
-                      {...register("license_number")}
-                      placeholder="CED123456"
-                      className="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    />
-                    {errors.license_number && (
-                      <p className="text-red-500 text-xs mt-1">
-                        {errors.license_number.message}
-                      </p>
-                    )}
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1.5">
-                      Precio por consulta (MXN)
-                    </label>
-                    <input
-                      {...register("consultation_price")}
-                      type="number"
-                      placeholder="800"
-                      className="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    />
-                    {errors.consultation_price && (
-                      <p className="text-red-500 text-xs mt-1">
-                        {errors.consultation_price.message}
-                      </p>
-                    )}
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1.5">
-                    Ciudad <span className="text-slate-400">(opcional)</span>
-                  </label>
-                  <input
-                    {...register("city")}
-                    placeholder="Culiacán"
-                    className="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* Contraseña */}
-            <div>
-              <p className="text-xs text-blue-600 font-medium tracking-widest uppercase mb-4">
-                Seguridad
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1.5">
-                    Contraseña
-                  </label>
-                  <input
-                    {...register("password")}
-                    type="password"
-                    placeholder="••••••••"
-                    className="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  />
-                  {errors.password && (
-                    <p className="text-red-500 text-xs mt-1">
-                      {errors.password.message}
-                    </p>
-                  )}
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1.5">
-                    Confirmar contraseña
-                  </label>
-                  <input
-                    {...register("password_confirmation")}
-                    type="password"
-                    placeholder="••••••••"
-                    className="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  />
-                  {errors.password_confirmation && (
-                    <p className="text-red-500 text-xs mt-1">
-                      {errors.password_confirmation.message}
-                    </p>
-                  )}
-                </div>
-              </div>
-            </div>
-
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white border-2 border-blue-800 py-3 rounded-xl text-sm font-medium transition-colors disabled:opacity-60"
-            >
-              {loading ? "Registrando..." : "Crear perfil profesional"}
-            </button>
-          </form>
-
-          <div className="mt-6 text-center">
-            <p className="text-sm text-slate-500">
-              ¿Ya tienes cuenta?{" "}
-              <Link
-                to="/login"
-                className="text-blue-600 hover:underline font-medium"
-              >
-                Inicia sesión
-              </Link>
-            </p>
-          </div>
-        </div>
-
-        <p className="text-center text-xs text-blue-400 mt-6">
-          © 2026 Contigo Terapia · Plataforma segura
+    <AuthLayout
+      title="Registro de Terapeuta"
+      subtitle="Crea tu perfil profesional"
+      error={error}
+      wide
+      footer={
+        <p className="text-sm text-slate-500">
+          ¿Ya tienes cuenta?{" "}
+          <Link to="/login" className="text-blue-600 hover:underline font-medium">
+            Inicia sesión
+          </Link>
         </p>
-      </div>
-    </div>
+      }
+    >
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+        {/* Datos personales */}
+        <div className="pb-4 border-b border-slate-100">
+          <SectionTitle>Datos personales</SectionTitle>
+          <div className="space-y-4">
+            <FormField label="Nombre completo" error={errors.name}>
+              <input
+                {...register("name")}
+                placeholder="Dr. Juan Pérez"
+                className={inputClass}
+              />
+            </FormField>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <FormField label="Email" error={errors.email}>
+                <input
+                  {...register("email")}
+                  type="email"
+                  placeholder="dr@email.com"
+                  className={inputClass}
+                />
+              </FormField>
+              <FormField label="Teléfono" optional>
+                <input
+                  {...register("phone")}
+                  placeholder="6671234567"
+                  className={inputClass}
+                />
+              </FormField>
+            </div>
+          </div>
+        </div>
+
+        {/* Datos profesionales */}
+        <div className="pb-4 border-b border-slate-100">
+          <SectionTitle>Datos profesionales</SectionTitle>
+          <div className="space-y-4">
+            <FormField label="Especialidad" error={errors.specialty_id}>
+              <select
+                {...register("specialty_id")}
+                className={`${inputClass} bg-white`}
+              >
+                <option value="">Selecciona una especialidad</option>
+                {SPECIALTIES.map((s) => (
+                  <option key={s.id} value={s.id}>
+                    {s.label}
+                  </option>
+                ))}
+              </select>
+            </FormField>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <FormField label="Cédula profesional" error={errors.license_number}>
+                <input
+                  {...register("license_number")}
+                  placeholder="CED123456"
+                  className={inputClass}
+                />
+              </FormField>
+              <FormField
+                label="Precio por consulta (MXN)"
+                error={errors.consultation_price}
+              >
+                <input
+                  {...register("consultation_price")}
+                  type="number"
+                  placeholder="800"
+                  className={inputClass}
+                />
+              </FormField>
+            </div>
+
+            <FormField label="Ciudad" optional>
+              <input
+                {...register("city")}
+                placeholder="Culiacán"
+                className={inputClass}
+              />
+            </FormField>
+          </div>
+        </div>
+
+        {/* Contraseña */}
+        <div>
+          <SectionTitle>Seguridad</SectionTitle>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <FormField label="Contraseña" error={errors.password}>
+              <input
+                {...register("password")}
+                type="password"
+                placeholder="••••••••"
+                className={inputClass}
+              />
+            </FormField>
+            <FormField
+              label="Confirmar contraseña"
+              error={errors.password_confirmation}
+            >
+              <input
+                {...register("password_confirmation")}
+                type="password"
+                placeholder="••••••••"
+                className={inputClass}
+              />
+            </FormField>
+          </div>
+        </div>
+
+        <Button
+          type="submit"
+          variant="cta"
+          disabled={loading}
+          className="w-full h-auto py-3 rounded-xl text-sm"
+        >
+          {loading ? "Registrando..." : "Crear perfil profesional"}
+        </Button>
+      </form>
+    </AuthLayout>
   );
 }

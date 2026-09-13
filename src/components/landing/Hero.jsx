@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Button } from "../ui/button";
 
 export default function Hero() {
   return (
@@ -19,13 +20,13 @@ export default function Hero() {
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
             <Link to="/registro/paciente">
-              <button className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white border-2 border-blue-800 px-7 py-3 rounded-lg text-base font-medium transition-colors">
+              <Button variant="cta" className="w-full sm:w-auto h-auto px-7 py-3 text-base">
                 Encontrar mi terapeuta
-              </button>
+              </Button>
             </Link>
-            <button className="w-full sm:w-auto bg-blue-100 hover:bg-blue-200 text-blue-900 border-2 border-blue-300 px-7 py-3 rounded-lg text-base font-medium transition-colors">
+            <Button variant="cta-outline" className="w-full sm:w-auto h-auto px-7 py-3 text-base">
               Ver cómo funciona
-            </button>
+            </Button>
           </div>
           <div className="flex justify-center md:justify-start gap-6 md:gap-10 mt-8 md:mt-12">
             {[
