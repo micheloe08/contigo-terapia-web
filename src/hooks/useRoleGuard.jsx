@@ -4,6 +4,9 @@ import { useAuthStore } from '../store/authStore'
 const ROLE_HOME = {
   patient: '/paciente',
   doctor: '/doctor',
+  admin: '/admin',
+  operator: '/admin',
+  supervisor_doctor: '/admin',
 }
 
 /**
@@ -11,11 +14,11 @@ const ROLE_HOME = {
  * instead of the layout when the visitor isn't logged in or has the wrong
  * role, or `null` when they're allowed through.
  */
-export function useRoleGuard(role) {
+export function useRoleGuard(...roles) {
   const user = useAuthStore((state) => state.user)
 
   if (!user) return <Navigate to="/login" replace />
-  if (user.role !== role) return <Navigate to={ROLE_HOME[user.role] ?? '/login'} replace />
+  if (!roles.includes(user.role)) return <Navigate to={ROLE_HOME[user.role] ?? '/login'} replace />
 
   return null
 }

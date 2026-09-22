@@ -9,6 +9,7 @@ import PageFallback from './components/layout/PageFallback'
 import GuestLayout from './layouts/GuestLayout.jsx'
 import PatientLayout from './layouts/PatientLayout'
 import DoctorLayout from './layouts/DoctorLayout'
+import AdminLayout from './layouts/AdminLayout'
 
 // Pages (lazy: split into separate chunks so visitors only download what they visit)
 const Landing = lazy(() => import('./pages/Landing'))
@@ -17,6 +18,7 @@ const RegisterPatient = lazy(() => import('./pages/auth/RegisterPatient'))
 const RegisterDoctor = lazy(() => import('./pages/auth/RegisterDoctor'))
 const PatientDashboard = lazy(() => import('./pages/patient/Dashboard'))
 const DoctorDashboard = lazy(() => import('./pages/doctor/Dashboard'))
+const AdminDashboard = lazy(() => import('./pages/admin/Dashboard'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 
 function withSuspense(element) {
@@ -48,6 +50,14 @@ const router = createBrowserRouter([
     element: <DoctorLayout />,
     children: [
       { path: '/doctor', element: withSuspense(<DoctorDashboard />) },
+    ],
+  },
+
+  // Rutas admin / operator / supervisor
+  {
+    element: <AdminLayout />,
+    children: [
+      { path: '/admin', element: withSuspense(<AdminDashboard />) },
     ],
   },
 
