@@ -31,7 +31,7 @@ export default function Specialties() {
           {SPECIALTIES.map((s, i) => (
             <div
               key={s.label}
-              className={`bg-white border border-slate-200 rounded-xl p-4 md:p-6 text-center transition-colors cursor-pointer ${COLORS[i % COLORS.length]}`}
+              className={`rounded-xl p-4 md:p-6 text-center transition-colors cursor-pointer ${COLORS[i % COLORS.length]}`}
             >
               <i
                 className={`ti ${s.icon} text-blue-600 text-2xl md:text-3xl mb-2 md:mb-3 block`}
