@@ -79,7 +79,6 @@ export default function RegisterDoctor() {
 
   return (
     <AuthLayout
-      title="Registro de Terapeuta"
       subtitle="Crea tu perfil profesional"
       error={error}
       wide

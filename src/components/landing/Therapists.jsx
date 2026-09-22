@@ -39,11 +39,8 @@ export default function Therapists() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between mb-8 md:mb-10">
           <div>
-            <p className="text-xs text-blue-600 font-medium tracking-widest uppercase mb-2">
-              Terapeutas
-            </p>
-            <h2 className="text-2xl md:text-3xl font-medium text-slate-900">
-              Conoce a nuestros especialistas
+            <h2 className="text-2xl md:text-3xl text-slate-900">
+              <span className="font-light">Conoce a nuestros</span> <span className="font-semibold">especialistas</span>
             </h2>
           </div>
           <span className="text-sm text-blue-600 cursor-pointer hover:underline whitespace-nowrap">
@@ -54,10 +51,10 @@ export default function Therapists() {
           {THERAPISTS.map((t) => (
             <div
               key={t.initials}
-              className="bg-white border border-slate-200 rounded-2xl p-5 md:p-6 text-center"
+              className="bg-white border border-blue-100 hover:border-blue-300 hover:shadow-sm transition-all rounded-2xl p-5 md:p-6 text-center"
             >
               <div
-                className="w-14 h-14 rounded-full flex items-center justify-center font-medium text-lg mb-4 mx-auto"
+                className="w-16 h-16 rounded-full flex items-center justify-center font-medium text-xl mb-4 mx-auto"
                 style={{ background: t.bg, color: t.color }}
               >
                 {t.initials}

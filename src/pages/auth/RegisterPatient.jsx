@@ -50,7 +50,6 @@ export default function RegisterPatient() {
 
   return (
     <AuthLayout
-      title="Crear cuenta"
       subtitle="Regístrate como paciente"
       error={error}
       footer={

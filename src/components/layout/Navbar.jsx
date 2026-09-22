@@ -17,13 +17,8 @@ export default function Navbar() {
     <nav className="sticky top-0 z-50 bg-white border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-            <i className="ti ti-heart text-white text-sm" />
-          </div>
-          <span className="font-medium text-slate-900 text-base">
-            Contigo Terapia
-          </span>
+        <div className="flex items-center">
+          <img src="/logo-negro.png" alt="Contigo Terapia" className="h-10 w-auto" />
         </div>
 
         {/* Desktop menu */}

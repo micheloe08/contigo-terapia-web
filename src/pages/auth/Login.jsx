@@ -42,7 +42,6 @@ export default function Login() {
 
   return (
     <AuthLayout
-      title="Contigo Terapia"
       subtitle="Inicia sesión en tu cuenta"
       error={error}
       footer={

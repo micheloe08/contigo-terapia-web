@@ -1,14 +1,13 @@
-export default function AuthLayout({ title, subtitle, error, wide = false, children, footer }) {
+export default function AuthLayout({ subtitle, error, wide = false, children, footer }) {
   return (
     <div className="min-h-screen bg-blue-50 flex items-center justify-center p-4 sm:p-6">
       <div className={`w-full ${wide ? "max-w-lg" : "max-w-md"}`}>
         {/* Logo */}
         <div className="text-center mb-8">
-          <div className="w-14 h-14 bg-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <i className="ti ti-heart text-white text-2xl" />
-          </div>
-          <h1 className="text-2xl font-medium text-blue-900">{title}</h1>
-          <p className="text-blue-600 mt-1 text-sm">{subtitle}</p>
+          <img src="/logo-negro.png" alt="Contigo Terapia" className="h-20 w-auto mx-auto mb-4" />
+          <p className="text-blue-600 mt-1 text-sm">
+            {subtitle}
+          </p>
         </div>
 
         {/* Card */}
