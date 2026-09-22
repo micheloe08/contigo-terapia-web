@@ -6,6 +6,7 @@ import apiClient from "../../api/client";
 const QUICK_ACTIONS = [
   { icon: "ti-user-check", title: "Aprobar terapeutas", desc: "Revisar solicitudes pendientes", href: "/admin/terapeutas" },
   { icon: "ti-certificate", title: "Gestionar membresías", desc: "Activar o desactivar accesos", href: "#" },
+  { icon: "ti-list", title: "Catálogos", desc: "Enfoques, modalidades y poblaciones", href: "/admin/catalogos" },
   { icon: "ti-book", title: "Administrar cursos", desc: "Publicar capacitaciones", href: "#" },
   { icon: "ti-file-text", title: "Wiki y recursos", desc: "Gestionar contenido publicado", href: "#" },
   { icon: "ti-users", title: "Usuarios del sistema", desc: "Operators y supervisores", href: "#" },
