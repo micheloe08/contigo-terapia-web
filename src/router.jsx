@@ -19,6 +19,7 @@ const RegisterDoctor = lazy(() => import('./pages/auth/RegisterDoctor'))
 const PatientDashboard = lazy(() => import('./pages/patient/Dashboard'))
 const DoctorDashboard = lazy(() => import('./pages/doctor/Dashboard'))
 const AdminDashboard = lazy(() => import('./pages/admin/Dashboard'))
+const DoctorApproval = lazy(() => import('./pages/admin/DoctorApproval'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 
 function withSuspense(element) {
@@ -57,7 +58,8 @@ const router = createBrowserRouter([
   {
     element: <AdminLayout />,
     children: [
-      { path: '/admin', element: withSuspense(<AdminDashboard />) },
+      { path: '/admin',             element: withSuspense(<AdminDashboard />) },
+      { path: '/admin/terapeutas', element: withSuspense(<DoctorApproval />) },
     ],
   },
 
