@@ -19,7 +19,7 @@ export default function Hero() {
             presencial. Agenda en minutos, sin listas de espera.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
-            <Link to="/registro/paciente">
+            <Link to="/terapeutas">
               <Button variant="cta" className="w-full sm:w-auto h-auto px-7 py-3 text-base">
                 Encontrar mi terapeuta
               </Button>
