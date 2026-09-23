@@ -14,6 +14,7 @@ import AdminLayout from './layouts/AdminLayout'
 // Pages (lazy: split into separate chunks so visitors only download what they visit)
 const Landing = lazy(() => import('./pages/Landing'))
 const DoctorSearch = lazy(() => import('./pages/DoctorSearch'))
+const DoctorProfile = lazy(() => import('./pages/DoctorProfile'))
 const Login = lazy(() => import('./pages/auth/Login'))
 const RegisterPatient = lazy(() => import('./pages/auth/RegisterPatient'))
 const RegisterDoctor = lazy(() => import('./pages/auth/RegisterDoctor'))
@@ -34,7 +35,8 @@ const router = createBrowserRouter([
     element: <GuestLayout />,
     children: [
       { path: '/',           element: withSuspense(<Landing />) },
-      { path: '/terapeutas', element: withSuspense(<DoctorSearch />) },
+      { path: '/terapeutas',      element: withSuspense(<DoctorSearch />) },
+      { path: '/terapeutas/:id',   element: withSuspense(<DoctorProfile />) },
       { path: '/login', element: withSuspense(<Login />) },
       { path: '/registro/paciente', element: withSuspense(<RegisterPatient />) },
       { path: '/registro/doctor', element: withSuspense(<RegisterDoctor />) },
