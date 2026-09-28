@@ -21,10 +21,12 @@ const RegisterDoctor = lazy(() => import('./pages/auth/RegisterDoctor'))
 const PatientDashboard = lazy(() => import('./pages/patient/Dashboard'))
 const DoctorDashboard = lazy(() => import('./pages/doctor/Dashboard'))
 const DoctorSchedule = lazy(() => import('./pages/doctor/Schedule'))
+const DoctorAppointments = lazy(() => import('./pages/doctor/Appointments'))
 const AdminDashboard = lazy(() => import('./pages/admin/Dashboard'))
 const DoctorApproval = lazy(() => import('./pages/admin/DoctorApproval'))
 const Catalogs = lazy(() => import('./pages/admin/Catalogs'))
 const NotFound = lazy(() => import('./pages/NotFound'))
+const PatientAppointments = lazy(() => import('./pages/patient/Appointments'))
 
 function withSuspense(element) {
   return <Suspense fallback={<PageFallback />}>{element}</Suspense>
@@ -48,7 +50,8 @@ const router = createBrowserRouter([
   {
     element: <PatientLayout />,
     children: [
-      { path: '/paciente', element: withSuspense(<PatientDashboard />) },
+      { path: '/paciente',       element: withSuspense(<PatientDashboard />) },
+      { path: '/paciente/citas',   element: withSuspense(<PatientAppointments />) },
     ],
   },
 
@@ -58,6 +61,7 @@ const router = createBrowserRouter([
     children: [
       { path: '/doctor',          element: withSuspense(<DoctorDashboard />) },
       { path: '/doctor/horarios', element: withSuspense(<DoctorSchedule />) },
+      { path: '/doctor/citas',    element: withSuspense(<DoctorAppointments />) },
     ],
   },
 
