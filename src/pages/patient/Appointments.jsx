@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import apiClient from "../../api/client";
 
 const STATUS_LABELS = {
@@ -23,6 +23,7 @@ export default function PatientAppointments() {
   const [cancelling, setCancelling]     = useState(null);
   const [cancelReason, setCancelReason] = useState("");
   const [error, setError]               = useState(null);
+  const navigate                        = useNavigate();
 
   const fetchAppointments = useCallback(async () => {
     setLoading(true);
@@ -129,6 +130,14 @@ export default function PatientAppointments() {
                   <span className={`text-xs font-medium px-2.5 py-1 rounded-full ${STATUS_LABELS[statusValue(apt)]?.className}`}>
                     {STATUS_LABELS[statusValue(apt)]?.label}
                   </span>
+                  {["pending"].includes(statusValue(apt)) && (
+                    <button
+                      onClick={() => navigate(`/paciente/checkout?appointment_id=${apt.id}`)}
+                      className="text-xs bg-blue-600 text-white px-3 py-1 rounded-full hover:bg-blue-700 transition-colors"
+                    >
+                      Pagar
+                    </button>
+                  )}
                   {["pending", "confirmed"].includes(statusValue(apt)) && (
                     <button
                       onClick={() => handleCancel(apt)}
