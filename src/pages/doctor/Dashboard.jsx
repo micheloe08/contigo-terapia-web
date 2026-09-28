@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useAuthStore } from "../../store/authStore";
 
 export default function DoctorDashboard() {
@@ -89,7 +90,7 @@ export default function DoctorDashboard() {
               Acciones rápidas
             </h2>
             <div className="flex flex-col gap-3">
-              <button className="flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-blue-50 hover:border-blue-200 transition-colors text-left">
+              <Link to="/doctor/horarios" className="flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-blue-50 hover:border-blue-200 transition-colors text-left">
                 <div className="w-9 h-9 bg-blue-50 rounded-lg flex items-center justify-center">
                   <i className="ti ti-clock text-blue-600" />
                 </div>
@@ -101,7 +102,7 @@ export default function DoctorDashboard() {
                     Define tu disponibilidad semanal
                   </p>
                 </div>
-              </button>
+              </Link>
               <button className="flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:bg-blue-50 hover:border-blue-200 transition-colors text-left">
                 <div className="w-9 h-9 bg-blue-50 rounded-lg flex items-center justify-center">
                   <i className="ti ti-user text-blue-600" />

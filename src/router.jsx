@@ -20,6 +20,7 @@ const RegisterPatient = lazy(() => import('./pages/auth/RegisterPatient'))
 const RegisterDoctor = lazy(() => import('./pages/auth/RegisterDoctor'))
 const PatientDashboard = lazy(() => import('./pages/patient/Dashboard'))
 const DoctorDashboard = lazy(() => import('./pages/doctor/Dashboard'))
+const DoctorSchedule = lazy(() => import('./pages/doctor/Schedule'))
 const AdminDashboard = lazy(() => import('./pages/admin/Dashboard'))
 const DoctorApproval = lazy(() => import('./pages/admin/DoctorApproval'))
 const Catalogs = lazy(() => import('./pages/admin/Catalogs'))
@@ -55,7 +56,8 @@ const router = createBrowserRouter([
   {
     element: <DoctorLayout />,
     children: [
-      { path: '/doctor', element: withSuspense(<DoctorDashboard />) },
+      { path: '/doctor',          element: withSuspense(<DoctorDashboard />) },
+      { path: '/doctor/horarios', element: withSuspense(<DoctorSchedule />) },
     ],
   },
 
