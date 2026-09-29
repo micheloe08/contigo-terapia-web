@@ -28,6 +28,12 @@ const Catalogs = lazy(() => import('./pages/admin/Catalogs'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 const PatientAppointments = lazy(() => import('./pages/patient/Appointments'))
 const Checkout = lazy(() => import('./pages/patient/Checkout'))
+const AdminCourseList = lazy(() => import('./pages/admin/courses/CourseList'))
+const AdminCourseForm = lazy(() => import('./pages/admin/courses/CourseForm'))
+const AdminModuleForm = lazy(() => import('./pages/admin/courses/ModuleForm'))
+const DoctorCourseList = lazy(() => import('./pages/doctor/courses/CourseList'))
+const DoctorCourseDetail = lazy(() => import('./pages/doctor/courses/CourseDetail'))
+const LessonView = lazy(() => import('./pages/doctor/courses/LessonView'))
 
 function withSuspense(element) {
   return <Suspense fallback={<PageFallback />}>{element}</Suspense>
@@ -64,6 +70,9 @@ const router = createBrowserRouter([
       { path: '/doctor',          element: withSuspense(<DoctorDashboard />) },
       { path: '/doctor/horarios', element: withSuspense(<DoctorSchedule />) },
       { path: '/doctor/citas',    element: withSuspense(<DoctorAppointments />) },
+      { path: '/doctor/cursos',              element: withSuspense(<DoctorCourseList />) },
+      { path: '/doctor/cursos/:id',          element: withSuspense(<DoctorCourseDetail />) },
+      { path: '/doctor/lecciones/:id',       element: withSuspense(<LessonView />) },
     ],
   },
 
@@ -74,6 +83,10 @@ const router = createBrowserRouter([
       { path: '/admin',              element: withSuspense(<AdminDashboard />) },
       { path: '/admin/terapeutas',   element: withSuspense(<DoctorApproval />) },
       { path: '/admin/catalogos',    element: withSuspense(<Catalogs />) },
+      { path: '/admin/cursos',                    element: withSuspense(<AdminCourseList />) },
+      { path: '/admin/cursos/nuevo',              element: withSuspense(<AdminCourseForm />) },
+      { path: '/admin/cursos/:id/editar',         element: withSuspense(<AdminCourseForm />) },
+      { path: '/admin/cursos/:id/modulos',        element: withSuspense(<AdminModuleForm />) },
     ],
   },
 
