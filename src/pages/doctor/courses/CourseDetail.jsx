@@ -13,6 +13,35 @@ function ProgressBar({ percentage }) {
   )
 }
 
+function CertificateButton({ courseId }) {
+  const [loading, setLoading] = useState(false)
+
+  const handleDownload = async () => {
+    setLoading(true)
+    try {
+      const res = await apiClient.get(`/doctor/courses/${courseId}/certificate`)
+      window.open(res.data.download_url, '_blank')
+    } catch {
+      // silencioso — el usuario puede intentar de nuevo
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  return (
+    <button
+      onClick={handleDownload}
+      disabled={loading}
+      className="inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 disabled:bg-emerald-400 text-white text-sm font-medium rounded-lg transition-colors"
+    >
+      {loading
+        ? <div className="animate-spin rounded-full h-3.5 w-3.5 border-2 border-white border-t-transparent" />
+        : <i className="ti ti-certificate" />}
+      {loading ? 'Preparando…' : '🎓 Descargar certificado'}
+    </button>
+  )
+}
+
 export default function CourseDetail() {
   const { id } = useParams()
   const navigate = useNavigate()
@@ -133,6 +162,13 @@ export default function CourseDetail() {
                 <span className="font-medium">{course.progress_percentage}%</span>
               </div>
               <ProgressBar percentage={course.progress_percentage} />
+            </div>
+          )}
+
+          {/* Certificado disponible */}
+          {course.is_enrolled && course.progress_percentage === 100 && (
+            <div className="mb-4">
+              <CertificateButton courseId={id} />
             </div>
           )}
 

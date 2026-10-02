@@ -82,6 +82,12 @@ export default function DoctorCourseList() {
                     Inscrito
                   </div>
                 )}
+                {course.is_enrolled && course.progress_percentage === 100 && (
+                  <div className="absolute bottom-2 left-2 bg-emerald-500 text-white text-xs px-2 py-0.5 rounded-full flex items-center gap-1">
+                    <i className="ti ti-certificate text-xs" />
+                    Certificado
+                  </div>
+                )}
               </div>
 
               <div className="p-4">

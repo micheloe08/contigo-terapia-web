@@ -34,6 +34,7 @@ const AdminModuleForm = lazy(() => import('./pages/admin/courses/ModuleForm'))
 const DoctorCourseList = lazy(() => import('./pages/doctor/courses/CourseList'))
 const DoctorCourseDetail = lazy(() => import('./pages/doctor/courses/CourseDetail'))
 const LessonView = lazy(() => import('./pages/doctor/courses/LessonView'))
+const AdminCertificateSettings = lazy(() => import('./pages/admin/courses/CertificateSettings'))
 
 function withSuspense(element) {
   return <Suspense fallback={<PageFallback />}>{element}</Suspense>
@@ -87,6 +88,7 @@ const router = createBrowserRouter([
       { path: '/admin/cursos/nuevo',              element: withSuspense(<AdminCourseForm />) },
       { path: '/admin/cursos/:id/editar',         element: withSuspense(<AdminCourseForm />) },
       { path: '/admin/cursos/:id/modulos',        element: withSuspense(<AdminModuleForm />) },
+      { path: '/admin/certificados',              element: withSuspense(<AdminCertificateSettings />) },
     ],
   },
 
