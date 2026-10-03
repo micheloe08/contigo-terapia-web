@@ -47,6 +47,10 @@ export default function DoctorDashboard() {
             <img src="/logo-negro.png" alt="Contigo Terapia" className="h-8 w-auto" />
           </div>
           <div className="flex items-center gap-3 sm:gap-4">
+            <Link to="/doctor/cursos" className="text-sm text-slate-600 hover:text-blue-600 hidden sm:flex items-center gap-1.5 transition-colors">
+              <i className="ti ti-books text-base" />
+              Cursos
+            </Link>
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
                 <i className="ti ti-stethoscope text-blue-600 text-sm" />
