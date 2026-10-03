@@ -5,6 +5,9 @@ export default function GuestLayout() {
   const { user } = useAuthStore()
 
   if (user) {
+    if (user.role === 'admin' || user.role === 'operator' || user.role === 'supervisor_doctor') {
+      return <Navigate to="/admin" replace />
+    }
     return <Navigate to={user.role === 'doctor' ? '/doctor' : '/paciente'} replace />
   }
 

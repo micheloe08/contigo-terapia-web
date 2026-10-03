@@ -1,7 +1,14 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Button } from "../ui/button";
 
-const NAV_LINKS = ["Terapeutas", "Especialidades", "Precios"];
+// "Precios" has no matching landing section yet, so it stays a plain label
+// (no href) until that section exists.
+const NAV_LINKS = [
+  { label: "Terapeutas", href: "#terapeutas" },
+  { label: "Especialidades", href: "#especialidades" },
+  { label: "Precios", href: null },
+];
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -10,29 +17,31 @@ export default function Navbar() {
     <nav className="sticky top-0 z-50 bg-white border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-            <i className="ti ti-heart text-white text-sm" />
-          </div>
-          <span className="font-medium text-slate-900 text-base">
-            Contigo Terapia
-          </span>
+        <div className="flex items-center">
+          <img src="/logo-negro.png" alt="Contigo Terapia" className="h-10 w-auto" />
         </div>
 
         {/* Desktop menu */}
         <div className="hidden md:flex items-center gap-8">
-          {NAV_LINKS.map((l) => (
-            <span
-              key={l}
-              className="text-sm text-slate-500 cursor-pointer hover:text-blue-600 transition-colors"
-            >
-              {l}
-            </span>
-          ))}
+          {NAV_LINKS.map((l) =>
+            l.href ? (
+              <a
+                key={l.label}
+                href={l.href}
+                className="text-sm text-slate-500 hover:text-blue-600 transition-colors"
+              >
+                {l.label}
+              </a>
+            ) : (
+              <span key={l.label} className="text-sm text-slate-400">
+                {l.label}
+              </span>
+            )
+          )}
           <Link to="/login">
-            <button className="bg-blue-600 hover:bg-blue-700 text-white border-2 border-blue-800 px-5 py-2 rounded-lg text-sm font-medium transition-colors">
+            <Button variant="cta" className="h-auto px-5 py-2 text-sm">
               Iniciar sesión
-            </button>
+            </Button>
           </Link>
         </div>
 
@@ -50,15 +59,26 @@ export default function Navbar() {
       {/* Mobile menu */}
       {menuOpen && (
         <div className="md:hidden border-t border-slate-200 px-4 py-4 flex flex-col gap-4 bg-white">
-          {NAV_LINKS.map((l) => (
-            <span key={l} className="text-sm text-slate-600 cursor-pointer">
-              {l}
-            </span>
-          ))}
+          {NAV_LINKS.map((l) =>
+            l.href ? (
+              <a
+                key={l.label}
+                href={l.href}
+                className="text-sm text-slate-600"
+                onClick={() => setMenuOpen(false)}
+              >
+                {l.label}
+              </a>
+            ) : (
+              <span key={l.label} className="text-sm text-slate-400">
+                {l.label}
+              </span>
+            )
+          )}
           <Link to="/login" onClick={() => setMenuOpen(false)}>
-            <button className="w-full bg-blue-600 text-white border-2 border-blue-800 py-2.5 rounded-lg text-sm font-medium">
+            <Button variant="cta" className="w-full h-auto py-2.5 text-sm">
               Iniciar sesión
-            </button>
+            </Button>
           </Link>
         </div>
       )}

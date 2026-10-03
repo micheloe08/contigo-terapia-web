@@ -21,11 +21,8 @@ export default function FAQ() {
   return (
     <section className="py-12 md:py-16 bg-slate-50">
       <div className="max-w-4xl mx-auto px-4">
-        <p className="text-xs text-blue-600 font-medium tracking-widest uppercase mb-2">
-          FAQ
-        </p>
-        <h2 className="text-2xl md:text-3xl font-medium text-slate-900 mb-8 md:mb-10">
-          Preguntas frecuentes
+        <h2 className="text-2xl md:text-3xl text-slate-900 mb-8 md:mb-10">
+          <span className="font-light">Preguntas</span> <span className="font-semibold">frecuentes</span>
         </h2>
         <div className="flex flex-col gap-3 md:gap-4">
           {FAQS.map((f) => (

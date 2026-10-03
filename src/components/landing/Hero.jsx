@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Button } from "../ui/button";
 
 export default function Hero() {
   return (
@@ -8,24 +9,24 @@ export default function Hero() {
           <span className="bg-blue-200 text-blue-900 text-xs font-medium px-3 py-1 rounded-full">
             Terapia online certificada
           </span>
-          <h1 className="text-3xl md:text-5xl font-medium text-blue-900 mt-4 mb-4 leading-tight">
-            Tu bienestar mental,
+          <h1 className="text-3xl md:text-5xl text-blue-900 mt-4 mb-4 leading-tight">
+            <span className="font-light">Tu bienestar mental,</span>
             <br />
-            desde donde estés
+            <span className="font-semibold">desde donde estés</span>
           </h1>
           <p className="text-blue-700 text-base md:text-lg leading-relaxed mb-6 md:mb-8 max-w-lg mx-auto md:mx-0">
             Conecta con psicólogos certificados por videollamada, chat o
             presencial. Agenda en minutos, sin listas de espera.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
-            <Link to="/registro/paciente">
-              <button className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white border-2 border-blue-800 px-7 py-3 rounded-lg text-base font-medium transition-colors">
+            <Link to="/terapeutas">
+              <Button variant="cta" className="w-full sm:w-auto h-auto px-7 py-3 text-base">
                 Encontrar mi terapeuta
-              </button>
+              </Button>
             </Link>
-            <button className="w-full sm:w-auto bg-blue-100 hover:bg-blue-200 text-blue-900 border-2 border-blue-300 px-7 py-3 rounded-lg text-base font-medium transition-colors">
+            <Button variant="cta-outline" className="w-full sm:w-auto h-auto px-7 py-3 text-base">
               Ver cómo funciona
-            </button>
+            </Button>
           </div>
           <div className="flex justify-center md:justify-start gap-6 md:gap-10 mt-8 md:mt-12">
             {[
@@ -50,10 +51,11 @@ export default function Hero() {
           </div>
         </div>
         <div className="flex-1 flex justify-center w-full">
-          <div className="w-full max-w-sm md:max-w-md h-56 md:h-80 bg-blue-100 rounded-2xl flex items-center justify-center border border-blue-200">
-            <div className="text-center">
-              <i className="ti ti-heart text-blue-300 text-6xl md:text-8xl mb-4 block" />
-              <p className="text-blue-400 text-sm">Imagen ilustrativa</p>
+          <div className="w-full max-w-sm md:max-w-md h-56 md:h-80 bg-blue-100 rounded-3xl flex items-center justify-center border border-blue-200 relative overflow-hidden">
+            <div className="absolute w-48 h-48 bg-blue-200 rounded-full -top-10 -right-10 opacity-50" />
+            <div className="absolute w-32 h-32 bg-blue-50 rounded-full -bottom-8 -left-8 opacity-70" />
+            <div className="relative z-10 text-center">
+              <img src="/logo-negro.png" alt="Contigo Terapia" className="h-28 w-auto mx-auto opacity-20" />
             </div>
           </div>
         </div>

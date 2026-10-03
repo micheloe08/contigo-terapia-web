@@ -1,6 +1,5 @@
-import * as React from "react"
 import { cva } from "class-variance-authority";
-import { Slot } from "radix-ui"
+import { Slot } from "@radix-ui/react-slot"
 
 import { cn } from "@/lib/utils"
 
@@ -19,6 +18,12 @@ const buttonVariants = cva(
         destructive:
           "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
         link: "text-primary underline-offset-4 hover:underline",
+        // Brand CTA treatments used across the marketing site and auth forms.
+        cta: "bg-blue-600 text-white border-2 border-blue-800 hover:bg-blue-700",
+        "cta-outline":
+          "bg-blue-100 text-blue-900 border-2 border-blue-300 hover:bg-blue-200",
+        "cta-muted":
+          "bg-slate-100 text-slate-700 border border-slate-300 hover:bg-slate-200",
       },
       size: {
         default:
@@ -48,7 +53,7 @@ function Button({
   asChild = false,
   ...props
 }) {
-  const Comp = asChild ? Slot.Root : "button"
+  const Comp = asChild ? Slot : "button"
 
   return (
     <Comp
@@ -60,4 +65,5 @@ function Button({
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components -- shadcn/ui convention: variants live alongside the component
 export { Button, buttonVariants }
