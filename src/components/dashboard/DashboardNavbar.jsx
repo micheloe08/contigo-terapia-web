@@ -3,7 +3,7 @@ import { useAuthStore } from "../../store/authStore";
 import { authApi } from "../../api/auth";
 import { Button } from "../ui/button";
 
-export default function DashboardNavbar({ icon, label }) {
+export default function DashboardNavbar({ icon, label, extraLinks }) {
   const logout = useAuthStore((state) => state.logout);
   const navigate = useNavigate();
 
@@ -23,6 +23,7 @@ export default function DashboardNavbar({ icon, label }) {
           <img src="/logo-negro.png" alt="Contigo Terapia" className="h-8 w-auto" />
         </div>
         <div className="flex items-center gap-3 sm:gap-4">
+          {extraLinks}
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
               <i className={`ti ${icon} text-blue-600 text-sm`} />
