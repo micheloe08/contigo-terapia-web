@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useAuthStore } from "../../store/authStore";
 import { Button } from "../../components/ui/button";
 
@@ -56,11 +55,9 @@ export default function PatientDashboard() {
             Encuentra al terapeuta ideal para ti entre nuestros especialistas
             certificados
           </p>
-          <Link to="/terapeutas">
-            <Button variant="cta" className="h-auto px-8 py-3 rounded-xl text-sm">
-              Buscar terapeuta
-            </Button>
-          </Link>
+          <Button variant="cta" className="h-auto px-8 py-3 rounded-xl text-sm">
+            Buscar terapeuta
+          </Button>
         </div>
       </main>
     </>

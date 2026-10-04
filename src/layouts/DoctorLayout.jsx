@@ -11,7 +11,7 @@ export default function DoctorLayout() {
 
   return (
     <div className="min-h-screen bg-slate-50">
-      <DashboardNavbar icon="ti-stethoscope" label={`Dr. ${user?.name ?? ''}`} />
+      <DashboardNavbar icon="ti-stethoscope" label={`Dr. ${user.name}`} />
       <Outlet />
     </div>
   )
