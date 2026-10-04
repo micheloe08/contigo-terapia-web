@@ -1,8 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import { useAuthStore } from "../../store/authStore";
 import { Button } from "../../components/ui/button";
 
 export default function PatientDashboard() {
   const user = useAuthStore((state) => state.user);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -55,7 +57,11 @@ export default function PatientDashboard() {
             Encuentra al terapeuta ideal para ti entre nuestros especialistas
             certificados
           </p>
-          <Button variant="cta" className="h-auto px-8 py-3 rounded-xl text-sm">
+          <Button
+            variant="cta"
+            className="h-auto px-8 py-3 rounded-xl text-sm"
+            onClick={() => navigate("/terapeutas")}
+          >
             Buscar terapeuta
           </Button>
         </div>
