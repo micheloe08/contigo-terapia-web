@@ -140,11 +140,11 @@ export default function CourseDetail() {
           <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 mb-4">
             <span className="flex items-center gap-1">
               <i className="ti ti-layout-list" />
-              {course.modules?.length ?? 0} módulos
+              {(n => `${n} ${n === 1 ? "módulo" : "módulos"}`)(course.modules?.length ?? 0)}
             </span>
             <span className="flex items-center gap-1">
               <i className="ti ti-player-play" />
-              {totalLessons} lecciones
+              {(n => `${n} ${n === 1 ? "lección" : "lecciones"}`)(totalLessons)}
             </span>
             {course.is_enrolled && (
               <span className="flex items-center gap-1 text-green-600">
@@ -215,7 +215,7 @@ export default function CourseDetail() {
                 </span>
                 <div>
                   <p className="font-medium text-gray-900 text-sm">{module.title}</p>
-                  <p className="text-xs text-gray-400">{(module.lessons ?? []).length} lecciones</p>
+                  <p className="text-xs text-gray-400">{(n => `${n} ${n === 1 ? "lección" : "lecciones"}`)(( module.lessons ?? []).length)}</p>
                 </div>
               </div>
               <i className={`ti ti-chevron-${openModules[module.id] ? 'up' : 'down'} text-gray-400`} />

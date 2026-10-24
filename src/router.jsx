@@ -28,6 +28,7 @@ const Catalogs = lazy(() => import('./pages/admin/Catalogs'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 const PatientAppointments = lazy(() => import('./pages/patient/Appointments'))
 const Checkout = lazy(() => import('./pages/patient/Checkout'))
+const BookAppointment = lazy(() => import('./pages/patient/BookAppointment'))
 const AdminCourseList = lazy(() => import('./pages/admin/courses/CourseList'))
 const AdminCourseForm = lazy(() => import('./pages/admin/courses/CourseForm'))
 const AdminModuleForm = lazy(() => import('./pages/admin/courses/ModuleForm'))
@@ -61,6 +62,7 @@ const router = createBrowserRouter([
       { path: '/paciente',          element: withSuspense(<PatientDashboard />) },
       { path: '/paciente/citas',      element: withSuspense(<PatientAppointments />) },
       { path: '/paciente/checkout',   element: withSuspense(<Checkout />) },
+      { path: '/paciente/agendar/:id', element: withSuspense(<BookAppointment />) },
     ],
   },
 
